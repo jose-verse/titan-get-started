@@ -5,10 +5,6 @@
   by José Alfredo Rey Méndez.
   VERSE Technology.
 */
-                          
-#include <OneWire.h>                                                          // LIBRARY
-#include <DallasTemperature.h>                                                // LIBRARY
-#define ONE_WIRE_BUS 10                                                       // PIN DS18B20 
 
 //POST //https://{your-iothub-name}.azure-devices.net/devices/{your-device}/messages/events?api-version={api-version}
 
@@ -19,9 +15,6 @@ String SASToken = "";                                                         //
 
 String endpoint = "/devices/"+deviceid+"/messages/events?api-version="+api;
 
-OneWire oneWire(ONE_WIRE_BUS);
-DallasTemperature sensors(&oneWire);
-
 void setup() { 
   SerialUSB.begin(115200);      // (SERIAL - SIM),  (SERIAL1 -D0-D1)
   Serial.begin(115200);           // Initialize hardware serial port, pins 0/1
@@ -29,7 +22,6 @@ void setup() {
   SIM5320_ON();                 // ON SIM5320
   delay(10000);
   SETUP_SIM5320();              // START SIM5320
-  sensors.begin();                                 
 }
   
 
